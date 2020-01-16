@@ -3,10 +3,12 @@ const { Schema } = mongoose;
 
 const userSchema = new Schema({
   name: {
-    type: String
+    type: String,
+    required: [true, "A name must be provided"]
   },
   age: {
-    type: Number
+    type: Number,
+    default: 20
   }
 });
 

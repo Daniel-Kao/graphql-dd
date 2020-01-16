@@ -1,4 +1,5 @@
 const graphql = require("graphql");
+const User = require("../models/userModel");
 
 const {
   GraphQLObjectType,
@@ -7,12 +8,6 @@ const {
   GraphQLList,
   GraphQLSchema
 } = graphql;
-
-const list = [
-  { id: "1", name: "daniel", age: 123 },
-  { id: "2", name: "kao", age: 123 },
-  { id: "3", name: "ji", age: 123 }
-];
 
 const UserType = new GraphQLObjectType({
   name: "User",
@@ -29,7 +24,7 @@ const RootQuery = new GraphQLObjectType({
     users: {
       type: new GraphQLList(UserType),
       resolve(parentValue, args) {
-        return list;
+        return User.find();
       }
     }
   })
